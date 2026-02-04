@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   PI CAPS - PREMIUM DESIGN SYSTEM
+   Futuristic 2050 Aesthetic
+   ============================================ */
+
+/* Pirulen Rg Font - Custom Display Font */
+@font-face {
+  font-family: 'Pirulen';
+  src: url('/fonts/Pirulen-Regular.woff2') format('woff2'),
+    url('/fonts/Pirulen-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Core Colors - HSL */
+    /* Primary Background - Pure White */
+    --background: 0 0% 100%;
+    /* Primary Text - Bio-Black (Deep, Organic Black) */
+    --foreground: 220 3% 11%;
+    /* #1D1D1F */
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 3% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 3% 11%;
+
+    /* Primary - Forest Green (Bio-Luxury) */
+    --primary: 154 39% 18%;
+    /* #1F402C - Deep Forest Green */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Pure White (No Grey) */
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 220 3% 11%;
+
+    /* Muted - Pure White or extremely subtle tint */
+    --muted: 0 0% 100%;
+    --muted-foreground: 220 3% 40%;
+
+    /* Accent - Fresh Leaf (Subtle highlight) */
+    --accent: 154 39% 96%;
+    --accent-foreground: 154 39% 18%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 92%;
+    /* Subtle border for structure */
+    --input: 0 0% 92%;
+    --ring: 154 39% 18%;
+
+    --radius: 1rem;
+
+    /* Glassmorphism */
+    --glass-bg: 0 0% 100% / 0.9;
+    --glass-bg-dark: 154 39% 10% / 0.9;
+    --glass-border: 0 0% 100% / 0.3;
+    --glass-shadow: 0 0% 0% / 0.05;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, transparent 0%, rgba(29, 29, 31, 0.4) 100%);
+    --gradient-card-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%);
+    --gradient-glow: radial-gradient(circle, rgba(31, 64, 44, 0.15) 0%, transparent 70%);
+  }
+
+  .dark {
+    /* Dark Mode - Deep Jungle Night */
+    --background: 154 20% 8%;
+    /* Very dark green/black */
+    --foreground: 0 0% 98%;
+
+    --card: 154 20% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 154 20% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 154 39% 40%;
+    /* Lighter green for dark mode contrast */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 154 20% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 154 20% 15%;
+    --muted-foreground: 154 10% 65%;
+
+    --accent: 154 20% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 154 20% 18%;
+    --input: 154 20% 18%;
+    --ring: 154 39% 40%;
+
+    --glass-bg: 154 20% 10% / 0.6;
+    --glass-border: 255 255 255 / 0.1;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+    /* Reduced scale for refined look */
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-inter);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Pirulen Headlines - Custom class outside @layer */
+.font-pirulen {
+  font-family: var(--font-pirulen);
+  letter-spacing: -0.02em;
+}
+
+@layer components {
+
+  /* Section Container */
+  .section-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  /* Text Styles */
+  .section-title {
+    font-family: var(--font-pirulen);
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .subsection-title {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: clamp(1.375rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .body-text {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: clamp(1rem, 1.25vw, 1.3125rem);
+    line-height: 1.625;
+  }
+
+  /* Glow Effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .scroll-indicator::after {
+    content: '';
+    width: 1px;
+    height: 4rem;
+    background: linear-gradient(to bottom, currentColor, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+
+  /* Animation Utilities */
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  /* Stagger delay utilities */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Parallax Speed Classes */
+  .parallax-slow {
+    --parallax-speed: 0.3;
+  }
+
+  .parallax-normal {
+    --parallax-speed: 0.6;
+  }
+
+  .parallax-fast {
+    --parallax-speed: 1;
+  }
+
+  .parallax-faster {
+    --parallax-speed: 1.3;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
