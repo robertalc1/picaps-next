@@ -11,6 +11,21 @@ const faqCategories = [
     name: "General",
     faqs: [
       {
+        question: "Ce sunt capsulele modulare PI CAPS?",
+        answer:
+          "Capsulele modulare PI CAPS sunt locuințe prefabricate premium, construite în fabrica noastră din România și livrate la cheie în locația ta. Spre deosebire de construcțiile tradiționale, capsulele modulare sunt gata în 100 de zile, au costuri transparente și pot fi relocate ulterior. Disponibile în 3 dimensiuni: Alpha 18m², Beta 28m² și Gamma 38m².",
+      },
+      {
+        question: "Care este diferența dintre o capsulă modulară și o casă tradițională?",
+        answer:
+          "O capsulă modulară PI CAPS este construită în fabrică în condiții controlate, ceea ce garantează calitate uniformă și termen cert de livrare (100 zile). O casă tradițională durează 12-24 luni, are costuri imprevizibile și este dependentă de condițiile meteo. Capsulele modulare sunt și eco-friendly, cu izolație superioară pentru -25°C și consum energetic redus.",
+      },
+      {
+        question: "Pot folosi o capsulă PI CAPS ca locuință permanentă?",
+        answer:
+          "Da! Modelul Gamma 38m² este proiectat special ca locuință permanentă completă, cu living spațios, dormitor, bucătărie și baie premium. Toate capsulele PI CAPS sunt construite cu materiale de calitate, izolație pentru -25°C și pot fi conectate la toate utilitățile exact ca o casă tradițională.",
+      },
+      {
         question: "Ai nevoie de autorizație de construcție?",
         answer: "În majoritatea situațiilor, capsulele PiCaps sunt încadrate ca structuri modulare/mobile, ceea ce poate permite amplasarea fără autorizație de construcție. Totuși, legislația poate varia în funcție de localitate, destinația utilizării și reglementările urbanistice locale. Echipa PiCaps oferă suport și consultanță pentru verificarea condițiilor legale aplicabile fiecărui proiect.",
       },
@@ -136,8 +151,27 @@ export default function FAQPage() {
     return results;
   }, [searchQuery, activeCategory]);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqCategories.flatMap((cat) =>
+      cat.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      }))
+    ),
+  };
+
   return (
     <main className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">

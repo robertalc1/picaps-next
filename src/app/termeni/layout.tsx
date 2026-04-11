@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politica de Cookies | PI CAPS",
+  title: "Termeni si Conditii | PI CAPS",
   description:
-    "Politica de cookies a PI CAPS — cum utilizam cookie-urile pe site-ul nostru.",
+    "Termenii si conditiile de utilizare a serviciilor PI CAPS pentru capsule modulare.",
   robots: {
     index: false,
     follow: true,
   },
   alternates: {
-    canonical: "https://picaps.ro/politica-cookies",
+    canonical: "https://picaps.ro/termeni",
   },
 };
 
-export default function PoliticaCookiesLayout({
+export default function TermeniLayout({
   children,
 }: {
   children: React.ReactNode;

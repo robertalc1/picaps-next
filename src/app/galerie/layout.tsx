@@ -1,24 +1,39 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Galerie",
+  title: "Galerie Capsule Modulare | Poze Interior Exterior | PI CAPS",
+  description:
+    "Galerie foto capsule modulare PI CAPS: exterior si interior Alpha 18m², Beta 28m², Gamma 38m². Imagini reale din productia noastra romaneasca.",
+  keywords: [
+    "galerie capsule modulare",
+    "poze case modulare",
+    "interior capsule modulare",
+    "exterior capsule modulare",
+    "PI CAPS galerie foto",
+  ],
+  openGraph: {
+    title: "Galerie Capsule Modulare | Poze Interior Exterior — PI CAPS",
     description:
-        "Explorează galeria foto PI CAPS: imagini exterioare și interioare ale capsulelor modulare Alpha, Beta și Gamma.",
-    openGraph: {
-        title: "Galerie — PI CAPS",
-        description:
-            "Imagini exterioare și interioare ale capsulelor modulare PI CAPS.",
-        url: "https://picaps.ro/galerie",
-    },
-    alternates: {
-        canonical: "https://picaps.ro/galerie",
-    },
+      "Galerie foto capsule modulare PI CAPS: exterior si interior Alpha 18m², Beta 28m², Gamma 38m².",
+    url: "https://picaps.ro/galerie",
+    images: [
+      {
+        url: "https://picaps.ro/p-gamma/exterior2-gamma.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Galerie Capsule Modulare PI CAPS Romania",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://picaps.ro/galerie",
+  },
 };
 
 export default function GalerieLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return children;
+  return children;
 }

@@ -4,9 +4,20 @@ const nextConfig = {
     reactStrictMode: true,
     poweredByHeader: false,
     compress: true,
+    trailingSlash: false,
 
     images: {
         unoptimized: true,
+    },
+
+    async redirects() {
+        return [
+            {
+                source: '/home',
+                destination: '/',
+                permanent: true,
+            },
+        ];
     },
 
     async headers() {

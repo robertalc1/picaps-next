@@ -46,7 +46,7 @@ export const ModelsOverview = () => {
             <div className="relative h-64 md:h-[450px] w-full rounded-3xl overflow-hidden shadow-2xl border border-black/5">
               <Image
                 src="/p-alpha/exterior1-alpha.jpeg"
-                alt="Alpha Exterior"
+                alt="Capsula modulara Alpha 18m² exterior PI CAPS Romania"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -82,7 +82,7 @@ export const ModelsOverview = () => {
             <div className="relative h-64 md:h-[450px] w-full rounded-3xl overflow-hidden shadow-2xl border border-black/5">
               <Image
                 src="/p-beta/exterior1-beta.jpeg"
-                alt="Beta Exterior"
+                alt="Capsula modulara Beta 28m² exterior PI CAPS Romania"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -119,7 +119,7 @@ export const ModelsOverview = () => {
               <div className="relative h-80 md:h-[500px] w-full">
                 <Image
                   src="/p-gamma/exterior2-gamma.jpeg"
-                  alt="Gamma Exterior"
+                  alt="Capsula modulara Gamma 38m² exterior PI CAPS Romania"
                   fill
                   className="object-cover"
                 />

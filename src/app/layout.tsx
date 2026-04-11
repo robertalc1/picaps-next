@@ -17,8 +17,116 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PI CAPS - Capsule Modulare de Locuit",
-  description: "Capsule modulare de locuit premium pentru un stil de viață modern",
+  title: {
+    default: "PI CAPS - Capsule Modulare Premium | Livrare 100 Zile",
+    template: "%s | PI CAPS Romania",
+  },
+  description:
+    "Capsule modulare de locuit la cheie în România. Design futurist, izolație premium, livrare în 100 zile. Alpha 18m², Beta 28m², Gamma 38m². Prețuri de la €23.500 + TVA.",
+  keywords: [
+    "capsule modulare",
+    "case modulare",
+    "casa modulara prefabricata",
+    "tiny house romania",
+    "casa container design",
+    "locuinta modulara",
+    "capsule locuibile",
+    "casa modulara romania",
+    "capsule modulare pret",
+    "case modulare prefabricate",
+    "casa capsula",
+    "capsule locuit",
+  ],
+  authors: [{ name: "PI CAPS" }],
+  creator: "PI CAPS",
+  publisher: "PI CAPS",
+  metadataBase: new URL("https://picaps.ro"),
+  alternates: { canonical: "https://picaps.ro" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    type: "website",
+    locale: "ro_RO",
+    url: "https://picaps.ro",
+    siteName: "PI CAPS - Capsule Modulare Romania",
+    title: "PI CAPS - Capsule Modulare Premium România",
+    description:
+      "Capsule modulare de locuit la cheie în România. Livrare în 100 zile. De la €23.500 + TVA.",
+    images: [
+      {
+        url: "https://picaps.ro/p-gamma/exterior2-gamma.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "PI CAPS Capsule Modulare Premium Romania",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PI CAPS - Capsule Modulare Premium România",
+    description:
+      "Capsule modulare de locuit la cheie în România. De la €23.500 + TVA.",
+    images: ["https://picaps.ro/p-gamma/exterior2-gamma.jpeg"],
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "https://picaps.ro/#organization",
+      name: "PI CAPS",
+      url: "https://picaps.ro",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://picaps.ro/logo-picaps.png",
+        width: 180,
+        height: 50,
+      },
+      image: "https://picaps.ro/p-gamma/exterior2-gamma.jpeg",
+      telephone: "+40727511563",
+      email: "contact@picaps.ro",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bucuresti",
+        addressCountry: "RO",
+      },
+      description:
+        "Producator roman de capsule modulare premium cu livrare in 100 zile",
+      priceRange: "€€€",
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+          ],
+          opens: "09:00",
+          closes: "18:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Saturday",
+          opens: "10:00",
+          closes: "14:00",
+        },
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://picaps.ro/#website",
+      url: "https://picaps.ro",
+      name: "PI CAPS - Capsule Modulare Romania",
+      publisher: { "@id": "https://picaps.ro/#organization" },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -28,7 +136,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className={`${syne.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body
+        className={`${syne.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />

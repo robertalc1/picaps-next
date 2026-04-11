@@ -58,6 +58,17 @@ export default function ModelePage() {
           </div>
         </section>
 
+        {/* SEO Intro */}
+        <section className="pb-4">
+          <div className="section-container">
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto text-lg">
+              Capsulele modulare PI CAPS reprezintă viitorul locuirii în România — case modulare
+              premium construite în fabrica noastră, livrate la cheie în 100 de zile,
+              cu prețuri transparente și fără surprize.
+            </p>
+          </div>
+        </section>
+
         {/* Products Grid */}
         <section className="py-16 lg:py-24">
           <div className="section-container">
@@ -85,7 +96,7 @@ export default function ModelePage() {
                       >
                         <Image
                           src={imgSrc}
-                          alt={`Exterior ${product.name}`}
+                          alt={`Casa modulara ${product.name} ${product.size} exterior PI CAPS`}
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           priority={index === 0}

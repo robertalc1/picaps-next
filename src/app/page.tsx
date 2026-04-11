@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { FluidSection } from "@/components/ui/fluid-section";
+import SEOTextSection from "@/components/home/SEOTextSection";
 
 const HeroSection = dynamic(() => import("@/components/home/HeroSection"), {
     loading: () => (
@@ -100,6 +101,10 @@ export default function HomePage() {
 
             <FluidSection topBlur={true} className="z-20 bg-[#FAFAFA]">
                 <FAQPreview />
+            </FluidSection>
+
+            <FluidSection className="z-20 bg-white">
+                <SEOTextSection />
             </FluidSection>
         </main>
     );
