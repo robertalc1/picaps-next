@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Modele Capsule Modulare | Alpha Beta Gamma | PI CAPS Romania",
+  title: "Modele Capsule Modulare | Alpha 18m² Beta 28m² Gamma 38m² | PI CAPS",
   description:
-    "Capsule modulare Alpha 18m², Beta 28m², Gamma 38m². Case modulare premium la cheie, fără autorizație în majoritatea cazurilor. Livrare 100 zile. De la €23.500 + TVA.",
+    "Alege capsula modulară potrivită: Alpha 18m² €23.500, Beta 28m² €33.500, Gamma 38m² €42.500. Livrare 100 zile, fără autorizație în majoritatea cazurilor.",
   keywords: [
     "capsule modulare modele",
     "alpha 18m2",

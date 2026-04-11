@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | PI CAPS Romania",
   },
   description:
-    "Capsule modulare de locuit la cheie în România. Design futurist, izolație premium, livrare în 100 zile. Alpha 18m², Beta 28m², Gamma 38m². Prețuri de la €23.500 + TVA.",
+    "Capsule modulare Alpha 18m², Beta 28m², Gamma 38m² la cheie în România. Fără autorizație în majoritatea cazurilor. Livrare 100 zile. De la €23.500 + TVA.",
   keywords: [
     "capsule modulare",
     "case modulare",
@@ -125,6 +125,30 @@ const organizationSchema = {
       url: "https://picaps.ro",
       name: "PI CAPS - Capsule Modulare Romania",
       publisher: { "@id": "https://picaps.ro/#organization" },
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Alpha 18m² - Capsulă Modulară",
+      url: "https://picaps.ro/modele/alpha",
+      description: "Capsulă modulară compactă 18m² de la €23.500 + TVA",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Beta 28m² - Capsulă Modulară",
+      url: "https://picaps.ro/modele/beta",
+      description: "Capsulă modulară cu dormitor separat 28m² de la €33.500 + TVA",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Gamma 38m² - Capsulă Modulară",
+      url: "https://picaps.ro/modele/gamma",
+      description: "Locuință modulară completă 38m² de la €42.500 + TVA",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: "Contact PI CAPS",
+      url: "https://picaps.ro/contact",
+      description: "Solicită ofertă personalizată capsule modulare",
     },
   ],
 };

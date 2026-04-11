@@ -19,21 +19,21 @@ const PRODUCT_METADATA: Record<
   { title: string; description: string; ogImage: string }
 > = {
   alpha: {
-    title: "Capsula Modulara Alpha 18m² | €23.500 | PI CAPS",
+    title: "Alpha 18m² - Capsulă Modulară Compactă | €23.500 | PI CAPS",
     description:
-      "Casa modulara Alpha 18m² la cheie. Fara autorizatie in majoritatea cazurilor. Dormitor + baie + instalatii complete. Livrare 100 zile. €23.500 + TVA.",
+      "Capsulă modulară Alpha 18m² la cheie. Dormitor + baie + instalații complete. Fără autorizație în majoritatea cazurilor. Livrare 100 zile. €23.500 + TVA.",
     ogImage: "https://picaps.ro/p-alpha/exterior1-alpha.jpeg",
   },
   beta: {
-    title: "Capsula Modulara Beta 28m² | €33.500 | PI CAPS",
+    title: "Beta 28m² - Capsulă Modulară cu Dormitor | €33.500 | PI CAPS",
     description:
-      "Casa modulara Beta 28m² cu dormitor separat si baie completa. Zona de zi distincta. Livrare 100 zile. Design premium. €33.500 + TVA.",
+      "Capsulă modulară Beta 28m² cu dormitor separat și baie completă. Zonă de living distinctă. Livrare 100 zile. €33.500 + TVA.",
     ogImage: "https://picaps.ro/p-beta/exterior1-beta.jpeg",
   },
   gamma: {
-    title: "Capsula Modulara Gamma 38m² | €42.500 | PI CAPS",
+    title: "Gamma 38m² - Locuință Modulară Completă | €42.500 | PI CAPS",
     description:
-      "Casa modulara Gamma 38m² - locuinta completa. Living spatios, dormitor, bucatarie, baie premium. Livrare 100 zile. €42.500 + TVA.",
+      "Capsulă modulară Gamma 38m² - locuință completă. Living spațios, dormitor, bucătărie, baie premium. Livrare 100 zile. €42.500 + TVA.",
     ogImage: "https://picaps.ro/p-gamma/exterior2-gamma.jpeg",
   },
 };
