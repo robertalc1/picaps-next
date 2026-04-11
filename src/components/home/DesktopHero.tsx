@@ -1,23 +1,22 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
 
 // =============================================================================
 // HERO - Tesla-Inspired Premium Video Background
 // Simple, elegant, and scannable design
-// Content appears after 5 seconds, hides when video loops, reappears after 5s
+// Content appears after 5 seconds, video plays once then stops
 // =============================================================================
 
 export const DesktopHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Handle video load and loop
+  // Handle video load
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -30,29 +29,7 @@ export const DesktopHero = () => {
       });
     };
 
-    // When video ends and loops, hide content and show again after 5s
-    const handleVideoLoop = () => {
-      // Hide content immediately when video restarts
-      setShowContent(false);
-      // Clear any existing timer
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-      // Show content again after 5 seconds
-      timerRef.current = setTimeout(() => {
-        setShowContent(true);
-      }, 5000);
-    };
-
-    // Use 'seeking' event to detect when video loops back to start
-    const handleSeeking = () => {
-      if (video.currentTime < 1) {
-        handleVideoLoop();
-      }
-    };
-
     video.addEventListener('canplaythrough', handleCanPlay);
-    video.addEventListener('seeking', handleSeeking);
 
     // If video is already ready
     if (video.readyState >= 3) {
@@ -61,7 +38,6 @@ export const DesktopHero = () => {
 
     return () => {
       video.removeEventListener('canplaythrough', handleCanPlay);
-      video.removeEventListener('seeking', handleSeeking);
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }
@@ -90,16 +66,7 @@ export const DesktopHero = () => {
     });
   };
 
-  // Scroll-based logo animation
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-
-  // Logo fades in as you scroll (0% scroll = 0 opacity, 50% scroll = 85% opacity)
-  const logoOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 0.85]);
-  const logoScale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
   return (
     <section
@@ -111,30 +78,13 @@ export const DesktopHero = () => {
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
-        src="/intro-picaps.mp4"
+        src="/video-desktop/Desktop-1.mp4"
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
-        poster="/first.webp"
       />
 
-      {/* Large Centered Logo - Appears on scroll at 85% opacity */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]"
-        style={{ opacity: logoOpacity, scale: logoScale }}
-      >
-        <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
-          <Image
-            src="/logo-picaps.png"
-            alt="PI CAPS Logo"
-            fill
-            className="object-contain brightness-0 invert"
-            priority
-          />
-        </div>
-      </motion.div>
 
       {/* Subtle dark overlay for text contrast - fades in with content */}
       <AnimatePresence>

@@ -11,7 +11,7 @@ import { AntigravityButton } from "@/components/ui/antigravity-button";
 
 // ✅ Mapare directă pe imaginile tale din /public (conform structurii din screenshot)
 const MODEL_IMAGES: Record<string, string> = {
-  alfa: "/p-alfa/exterior1-alfa.jpeg",
+  alpha: "/p-alpha/exterior1-alpha.jpeg",
   beta: "/p-beta/exterior1-beta.jpeg",
   gamma: "/p-gamma/exterior2-gamma.jpeg",
 };
@@ -65,7 +65,7 @@ export default function ModelePage() {
               {products.map((product, index) => {
                 const imgSrc =
                   MODEL_IMAGES[product.slug] ??
-                  "/p-alfa/exterior1-alfa.jpeg"; // fallback safe
+                  "/p-alpha/exterior1-alpha.jpeg"; // fallback safe
 
                 return (
                   <motion.div

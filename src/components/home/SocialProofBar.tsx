@@ -14,7 +14,7 @@ export const SocialProofBar = () => {
         muted
         playsInline
         preload="metadata"
-        src="/Pi Business Resort.mp4"
+        src="/Vid 1.mp4"
         className="absolute inset-0 w-full h-full object-cover"
       />
     </section>

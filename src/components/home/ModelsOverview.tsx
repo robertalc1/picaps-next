@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
@@ -27,15 +29,15 @@ export const ModelsOverview = () => {
     {
       title: (
         <div className="flex flex-col items-start gap-3">
-          <span>Alfa</span>
+          <span>Alpha</span>
           <span className="text-lg md:text-xl font-sans font-medium px-4 py-1.5 rounded-full bg-white border border-neutral-200 text-neutral-900 shadow-sm tracking-wide">
             18m²
           </span>
         </div>
       ),
       action: (
-        <AntigravityButton href="/modele/alfa" className="px-6 py-3" magnetic={true} withArrow={true}>
-          Descoperă Alfa
+        <AntigravityButton href="/modele/alpha" className="px-6 py-3" magnetic={true} withArrow={true}>
+          Descoperă Alpha
         </AntigravityButton>
       ),
       content: (
@@ -43,8 +45,8 @@ export const ModelsOverview = () => {
           <div className="mb-8 group">
             <div className="relative h-64 md:h-[450px] w-full rounded-3xl overflow-hidden shadow-2xl border border-black/5">
               <Image
-                src="/p-alfa/exterior1-alfa.jpeg"
-                alt="Alfa Exterior"
+                src="/p-alpha/exterior1-alpha.jpeg"
+                alt="Alpha Exterior"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -53,7 +55,7 @@ export const ModelsOverview = () => {
           </div>
           <div className="flex flex-col gap-6">
             <p className="text-neutral-800 dark:text-neutral-200 text-base md:text-lg font-light leading-relaxed max-w-2xl">
-              Compact și versatil, modelul Alfa este punctul de intrare perfect în lumea locuirii modulare.
+              Compact și versatil, modelul Alpha este punctul de intrare perfect în lumea locuirii modulare.
               Ideal pentru un birou de grădină remote sau o cameră de oaspeți intimă.
             </p>
           </div>

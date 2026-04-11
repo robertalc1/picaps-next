@@ -206,7 +206,7 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
           >
             {/* Product Badge */}
             <span className="inline-block px-4 py-1.5 bg-[#1C4030]/5 rounded-full text-xs font-medium uppercase tracking-widest text-[#1C4030] mb-4">
-              Capsulă Premium • {product.slug === 'alfa' ? '18m²' : product.slug === 'beta' ? '28m²' : '38m²'}
+              Capsulă Premium • {product.slug === 'alpha' ? '18m²' : product.slug === 'beta' ? '28m²' : '38m²'}
             </span>
 
             {/* Product Name */}
@@ -256,7 +256,7 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
           <div className="flex flex-col gap-1 px-3 sm:px-6 lg:px-8">
             <span className="text-[9px] sm:text-[10px] lg:text-xs font-medium uppercase tracking-widest text-neutral-400">Dimensiune</span>
             <span className="text-lg sm:text-xl lg:text-2xl font-medium text-[#1D1D1F]">
-              {product.slug === 'alfa' ? '18m²' : product.slug === 'beta' ? '28m²' : '38m²'}
+              {product.slug === 'alpha' ? '18m²' : product.slug === 'beta' ? '28m²' : '38m²'}
             </span>
           </div>
 

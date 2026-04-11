@@ -33,8 +33,8 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    slug: "alfa",
-    name: "Alfa",
+    slug: "alpha",
+    name: "Alpha",
     tagline: "Compactă și eficientă, concepută pentru spații restrânse sau proiecte de tip studio.",
     size: "18m²",
     sizeCategory: "Compact",
@@ -64,29 +64,29 @@ export const products: Product[] = [
       "Aer condiționat",
       "Apă caldă",
     ],
-    model3D: "/models/optimized/alfa.glb",
+    model3D: "/models/optimized/alpha.glb",
     virtualTour:
       "https://tour.panoee.net/6953736f421fbb9b9a0f96a9/695373c4421fbb51720f96ba",
-    heroImage: "/p-alfa/exterior1-alfa.jpeg",
+    heroImage: "/p-alpha/exterior1-alpha.jpeg",
     galleryImages: [
       {
-        src: "/p-alfa/camera-alfa.jpeg",
-        alt: "Capsula Alfa - Cameră interioară",
+        src: "/p-alpha/camera-alpha.jpeg",
+        alt: "Capsula Alpha - Cameră interioară",
         category: "interior",
       },
       {
-        src: "/p-alfa/baie-alfa.jpeg",
-        alt: "Capsula Alfa - Baie",
+        src: "/p-alpha/baie-alpha.jpeg",
+        alt: "Capsula Alpha - Baie",
         category: "interior",
       },
       {
-        src: "/p-alfa/exterior1-alfa.jpeg",
-        alt: "Capsula Alfa - Vedere exterioară frontală",
+        src: "/p-alpha/exterior1-alpha.jpeg",
+        alt: "Capsula Alpha - Vedere exterioară frontală",
         category: "exterior",
       },
       {
-        src: "/p-alfa/exterior2-alfa.jpeg",
-        alt: "Capsula Alfa - Vedere exterioară laterală",
+        src: "/p-alpha/exterior2-alpha.jpeg",
+        alt: "Capsula Alpha - Vedere exterioară laterală",
         category: "exterior",
       },
     ],

@@ -142,8 +142,8 @@ export default function DesprePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden relative">
                   <Image
-                    src="/p-alfa/camera-alfa.jpeg"
-                    alt="Camera Alfa"
+                    src="/p-alpha/camera-alpha.jpeg"
+                    alt="Camera Alpha"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1024px) 50vw, 25vw"

@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 const footerLinks = {
   products: [
-    { label: "Alfa - 18m²", href: "/modele/alfa" },
+    { label: "Alpha - 18m²", href: "/modele/alpha" },
     { label: "Beta - 28m²", href: "/modele/beta" },
     { label: "Gamma - 38m²", href: "/modele/gamma" },
     { label: "Pi Business Resort", href: "/pi-business-resort" },

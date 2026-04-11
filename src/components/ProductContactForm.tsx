@@ -45,7 +45,7 @@ const countryPrefixes = [
 ];
 
 const modelOptions = [
-  { value: "alfa", label: "Alfa - 18m²" },
+  { value: "alpha", label: "Alpha - 18m²" },
   { value: "beta", label: "Beta - 28m²" },
   { value: "gamma", label: "Gamma - 38m²" },
 ];

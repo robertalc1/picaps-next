@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 // Helper function to get readable model names
 const getModelLabel = (value: string): string => {
     const labels: Record<string, string> = {
-        alfa: 'Alfa - 18m²',
+        alpha: 'Alpha - 18m²',
         beta: 'Beta - 28m²',
         gamma: 'Gamma - 38m²',
     };

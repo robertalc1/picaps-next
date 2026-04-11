@@ -39,11 +39,11 @@ const steps = [
 
 const resortModels = [
   {
-    name: "Alfa",
+    name: "Alpha",
     sqm: "18",
     tag: "Entry Level",
     description: "Unitatea ideală pentru volume mari de cazare. Compactă, dar surprinzător de spațioasă.",
-    image: "/p-alfa/exterior1-alfa.jpeg",
+    image: "/p-alpha/exterior1-alpha.jpeg",
     specs: ["Dormitor matrimonial", "Baie complet echipată", "Smart lock integrat"],
   },
   {
@@ -121,7 +121,7 @@ export default function PiBusinessResortPage() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/Pi Business Resort.mp4" type="video/mp4" />
+            <source src="/Vid 1.mp4" type="video/mp4" />
           </video>
         </div>
 

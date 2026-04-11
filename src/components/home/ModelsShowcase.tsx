@@ -13,7 +13,7 @@ import Link from 'next/link';
 // =============================================================================
 
 const models = [
-    { id: 'alfa', path: '/models/optimized/alfa.glb', label: 'Alfa', slug: 'alfa', price: '€23.500' },
+    { id: 'alpha', path: '/models/optimized/alpha.glb', label: 'Alpha', slug: 'alpha', price: '€23.500' },
     { id: 'gamma', path: '/models/optimized/gamma.glb', label: 'Gamma', slug: 'gamma', price: '€42.500' },
     { id: 'beta', path: '/models/optimized/beta.glb', label: 'Beta', slug: 'beta', price: '€33.500' },
 ];
@@ -376,7 +376,7 @@ export const ModelsShowcase = () => {
 
 // Preload models
 if (typeof window !== 'undefined') {
-    useGLTF.preload('/models/optimized/alfa.glb');
+    useGLTF.preload('/models/optimized/alpha.glb');
     useGLTF.preload('/models/optimized/gamma.glb');
     useGLTF.preload('/models/optimized/beta.glb');
 }

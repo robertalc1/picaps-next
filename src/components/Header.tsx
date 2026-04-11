@@ -20,10 +20,10 @@ const navLinks = [
 
 const capsuleModels = [
   {
-    slug: "alfa",
-    name: "Alfa",
+    slug: "alpha",
+    name: "Alpha",
     size: "18m²",
-    image: "/p-alfa/alfa2-bg.jpeg",
+    image: "/p-alpha/alpha2-bg.jpeg",
   },
   {
     slug: "beta",

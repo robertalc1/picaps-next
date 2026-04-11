@@ -19,13 +19,13 @@ type GalleryItem = {
 };
 
 const GALLERY_ITEMS: GalleryItem[] = [
-  // --- ALFA (Interior) ---
-  { id: "alfa-baie", category: "Interior", src: "/p-alfa/baie-alfa.jpeg", alt: "Alfa - Baie", aspect: "landscape" },
-  { id: "alfa-camera", category: "Interior", src: "/p-alfa/camera-alfa.jpeg", alt: "Alfa - Cameră", aspect: "landscape" },
+  // --- ALPHA (Interior) ---
+  { id: "alpha-baie", category: "Interior", src: "/p-alpha/baie-alpha.jpeg", alt: "Alpha - Baie", aspect: "landscape" },
+  { id: "alpha-camera", category: "Interior", src: "/p-alpha/camera-alpha.jpeg", alt: "Alpha - Cameră", aspect: "landscape" },
 
-  // --- ALFA (Exterior) ---
-  { id: "alfa-exterior-1", category: "Exterior", src: "/p-alfa/exterior1-alfa.jpeg", alt: "Alfa - Exterior 1", aspect: "landscape" },
-  { id: "alfa-exterior-2", category: "Exterior", src: "/p-alfa/exterior2-alfa.jpeg", alt: "Alfa - Exterior 2", aspect: "landscape" },
+  // --- ALPHA (Exterior) ---
+  { id: "alpha-exterior-1", category: "Exterior", src: "/p-alpha/exterior1-alpha.jpeg", alt: "Alpha - Exterior 1", aspect: "landscape" },
+  { id: "alpha-exterior-2", category: "Exterior", src: "/p-alpha/exterior2-alpha.jpeg", alt: "Alpha - Exterior 2", aspect: "landscape" },
 
   // --- BETA (Interior) ---
   { id: "beta-baie", category: "Interior", src: "/p-beta/baie-beta.jpeg", alt: "Beta - Baie", aspect: "portrait" },
