@@ -36,6 +36,17 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Test conexiune SSH (diagnostic)
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          PORT="${SSH_PORT:-22}"
+          echo "=== Incerc conexiunea pe portul $PORT ==="
+          ssh -p "$PORT" -o StrictHostKeyChecking=no -o ConnectTimeout=15 -v \
+            "$SSH_USER@$SSH_HOST" "echo CONECTAT_OK; whoami; ls -d /home2/picapsro/picaps-app/.next" || echo ">>> A esuat pe portul $PORT"
+
       - name: Deploy .next + restart (SSH/rsync)
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -44,7 +55,7 @@ jobs:
         run: |
           PORT="${SSH_PORT:-22}"
           APP="/home2/picapsro/picaps-app"
-          ssh-keyscan -p "$PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p "$PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
           rsync -az --delete --exclude 'cache' --exclude 'standalone' \
             -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
             ./.next/ \
