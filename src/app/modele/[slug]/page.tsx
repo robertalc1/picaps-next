@@ -19,21 +19,21 @@ const PRODUCT_METADATA: Record<
   { title: string; description: string; ogImage: string }
 > = {
   alpha: {
-    title: "Alpha 18m² - Capsulă Modulară Compactă | €23.500 | PI CAPS",
+    title: "Alpha 18m² - Capsulă Modulară Compactă | PI CAPS",
     description:
-      "Capsulă modulară Alpha 18m² la cheie. Dormitor + baie + instalații complete. Fără autorizație în majoritatea cazurilor. Livrare 100 zile. €23.500 + TVA.",
+      "Capsulă modulară Alpha 18m² la cheie. Dormitor + baie + instalații complete. Fără autorizație în majoritatea cazurilor. Livrare 100 zile.",
     ogImage: "https://picaps.ro/p-alpha/exterior1-alpha.jpeg",
   },
   beta: {
-    title: "Beta 28m² - Capsulă Modulară cu Dormitor | €33.500 | PI CAPS",
+    title: "Beta 28m² - Capsulă Modulară cu Dormitor | PI CAPS",
     description:
-      "Capsulă modulară Beta 28m² cu dormitor separat și baie completă. Zonă de living distinctă. Livrare 100 zile. €33.500 + TVA.",
+      "Capsulă modulară Beta 28m² cu dormitor separat și baie completă. Zonă de living distinctă. Livrare 100 zile.",
     ogImage: "https://picaps.ro/p-beta/exterior1-beta.jpeg",
   },
   gamma: {
-    title: "Gamma 38m² - Locuință Modulară Completă | €42.500 | PI CAPS",
+    title: "Gamma 38m² - Locuință Modulară Completă | PI CAPS",
     description:
-      "Capsulă modulară Gamma 38m² - locuință completă. Living spațios, dormitor, bucătărie, baie premium. Livrare 100 zile. €42.500 + TVA.",
+      "Capsulă modulară Gamma 38m² - locuință completă. Living spațios, dormitor, bucătărie, baie premium. Livrare 100 zile.",
     ogImage: "https://picaps.ro/p-gamma/exterior2-gamma.jpeg",
   },
 };
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const meta = PRODUCT_METADATA[slug] ?? {
     title: `Capsula Modulara ${product.name} ${product.size} | PI CAPS`,
-    description: `${product.tagline} Suprafata utila ${product.size}, pret de la ${product.price}.`,
+    description: `${product.tagline} Suprafata utila ${product.size}.`,
     ogImage: `https://picaps.ro${product.heroImage}`,
   };
 
@@ -104,15 +104,6 @@ export default async function ProductPage({ params }: PageProps) {
         .slice(0, 3)
         .map((img) => `https://picaps.ro${img.src}`),
     ],
-    offers: {
-      "@type": "Offer",
-      price: product.priceValue,
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      url: `https://picaps.ro/modele/${product.slug}`,
-      seller: { "@id": "https://picaps.ro/#organization" },
-      priceValidUntil: "2026-12-31",
-    },
     manufacturer: { "@id": "https://picaps.ro/#organization" },
   };
 

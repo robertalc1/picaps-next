@@ -13,9 +13,9 @@ import Link from 'next/link';
 // =============================================================================
 
 const models = [
-    { id: 'alpha', path: '/models/optimized/alpha.glb', label: 'Alpha', slug: 'alpha', price: '€23.500' },
-    { id: 'gamma', path: '/models/optimized/gamma.glb', label: 'Gamma', slug: 'gamma', price: '€42.500' },
-    { id: 'beta', path: '/models/optimized/beta.glb', label: 'Beta', slug: 'beta', price: '€33.500' },
+    { id: 'alpha', path: '/models/optimized/alpha.glb', label: 'Alpha', slug: 'alpha' },
+    { id: 'gamma', path: '/models/optimized/gamma.glb', label: 'Gamma', slug: 'gamma' },
+    { id: 'beta', path: '/models/optimized/beta.glb', label: 'Beta', slug: 'beta' },
 ];
 
 // -----------------------------------------------------------------------------
@@ -310,12 +310,11 @@ export const ModelsShowcase = () => {
                     transition={{ duration: 0.3 }}
                     className="text-center mt-4 md:mt-6 px-4"
                 >
-                    {/* Price */}
+                    {/* Price on request */}
                     <div className="mb-4">
                         <p className="text-2xl md:text-3xl font-bold text-[#1C4030]">
-                            de la {activeModel.price}
+                            Preț la cerere
                         </p>
-                        <p className="text-xs text-neutral-400 mt-1">+ TVA</p>
                     </div>
 
                     {/* CTA Button - Just model name */}

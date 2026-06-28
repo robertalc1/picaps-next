@@ -8,7 +8,9 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(npx tsc:*)",
-      "Bash(grep -l \"Metadata\" src/app/*/layout.tsx src/app/layout.tsx)"
+      "Bash(grep -l \"Metadata\" src/app/*/layout.tsx src/app/layout.tsx)",
+      "PowerShell(npx tsc --noEmit)",
+      "Bash(git --no-pager diff -- src/)"
     ]
   }
 }

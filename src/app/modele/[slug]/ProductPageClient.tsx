@@ -219,22 +219,24 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
               {product.tagline}
             </p>
 
-            {/* Price & CTA */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
-              {/* Price Block */}
-              <div className="flex flex-col items-center sm:items-start">
-                <span className="text-sm font-medium text-neutral-400 uppercase tracking-wide mb-1">
-                  Preț de la
-                </span>
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] tracking-tight">
-                  {product.price.split('+')[0].trim()}
-                  <span className="text-xl sm:text-2xl text-neutral-400 ml-1">+ TVA</span>
-                </span>
-              </div>
-
-              {/* CTA Button */}
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+              {/* Primary CTA - Request Offer */}
               <AntigravityButton
                 variant="primary"
+                href="#contact"
+                onClick={(e: React.MouseEvent) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                magnetic={true}
+              >
+                Cere Ofertă
+              </AntigravityButton>
+
+              {/* Secondary CTA - Specs */}
+              <AntigravityButton
+                variant="secondary"
                 href="#tech-specs"
                 onClick={(e: React.MouseEvent) => {
                   e.preventDefault();
@@ -468,10 +470,7 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col">
             <span className="text-xs font-medium text-neutral-500 uppercase tracking-wide">{product.name}</span>
-            <span className="text-xl font-bold text-[#1D1D1F]">
-              {product.price.split('+')[0].trim()}
-              <span className="text-sm font-normal text-neutral-500 ml-1">+ TVA</span>
-            </span>
+            <span className="text-sm font-semibold text-[#1C4030]">{product.size}</span>
           </div>
           <AntigravityButton
             variant="primary"
@@ -483,7 +482,7 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
             className="px-6 py-3 text-sm whitespace-nowrap"
             magnetic={false}
           >
-            Solicită Ofertă
+            Cere Ofertă
           </AntigravityButton>
         </div>
       </motion.div>
@@ -498,13 +497,7 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
         <div className="bg-white/95 backdrop-blur-xl border border-neutral-200 shadow-2xl shadow-black/10 rounded-2xl px-6 py-4 flex items-center gap-6 pointer-events-auto">
           <span className="font-bold text-lg text-[#1D1D1F]">{product.name}</span>
           <div className="w-px h-6 bg-neutral-200" />
-          <div className="flex flex-col">
-            <span className="text-[10px] font-medium text-neutral-400 uppercase tracking-wide">Preț de la</span>
-            <span className="text-lg font-bold text-[#1D1D1F]">
-              {product.price.split('+')[0].trim()}
-              <span className="text-sm font-normal text-neutral-500 ml-1">+ TVA</span>
-            </span>
-          </div>
+          <span className="text-sm font-medium text-neutral-500">{product.size}</span>
           <AntigravityButton
             variant="primary"
             href="#contact"
@@ -515,7 +508,7 @@ export default function ProductPageClient({ product }: ProductPageClientProps) {
             className="px-8 py-3 text-sm"
             magnetic={true}
           >
-            Solicită Ofertă
+            Cere Ofertă
           </AntigravityButton>
         </div>
       </motion.div>

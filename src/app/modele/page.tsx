@@ -138,8 +138,8 @@ export default function ModelePage() {
                         {product.tagline}
                       </p>
 
-                      <div className="text-3xl font-inter font-bold text-foreground mb-8">
-                        {product.price}
+                      <div className="text-2xl font-inter font-bold text-primary mb-8">
+                        Preț la cerere
                       </div>
 
                       {/* Features */}
@@ -248,7 +248,7 @@ export default function ModelePage() {
                         key={product.slug}
                         className="text-center p-6 font-semibold text-foreground"
                       >
-                        €{product.priceValue.toLocaleString()}
+                        -
                       </td>
                     ))}
                   </tr>

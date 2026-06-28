@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | PI CAPS Romania",
   },
   description:
-    "Capsule modulare Alpha 18m², Beta 28m², Gamma 38m² la cheie în România. Fără autorizație în majoritatea cazurilor. Livrare 100 zile. De la €23.500 + TVA.",
+    "Capsule modulare Alpha 18m², Beta 28m², Gamma 38m² la cheie în România. Fără autorizație în majoritatea cazurilor. Livrare 100 zile.",
   keywords: [
     "capsule modulare",
     "case modulare",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "PI CAPS - Capsule Modulare Romania",
     title: "PI CAPS - Capsule Modulare Premium România",
     description:
-      "Capsule modulare de locuit la cheie în România. Livrare în 100 zile. De la €23.500 + TVA.",
+      "Capsule modulare de locuit la cheie în România. Livrare în 100 zile.",
     images: [
       {
         url: "https://picaps.ro/p-gamma/exterior2-gamma.jpeg",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PI CAPS - Capsule Modulare Premium România",
     description:
-      "Capsule modulare de locuit la cheie în România. De la €23.500 + TVA.",
+      "Capsule modulare de locuit la cheie în România.",
     images: ["https://picaps.ro/p-gamma/exterior2-gamma.jpeg"],
   },
 };
@@ -97,7 +97,6 @@ const organizationSchema = {
       },
       description:
         "Producator roman de capsule modulare premium cu livrare in 100 zile",
-      priceRange: "€€€",
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -130,19 +129,19 @@ const organizationSchema = {
       "@type": "SiteNavigationElement",
       name: "Alpha 18m² - Capsulă Modulară",
       url: "https://picaps.ro/modele/alpha",
-      description: "Capsulă modulară compactă 18m² de la €23.500 + TVA",
+      description: "Capsulă modulară compactă 18m²",
     },
     {
       "@type": "SiteNavigationElement",
       name: "Beta 28m² - Capsulă Modulară",
       url: "https://picaps.ro/modele/beta",
-      description: "Capsulă modulară cu dormitor separat 28m² de la €33.500 + TVA",
+      description: "Capsulă modulară cu dormitor separat 28m²",
     },
     {
       "@type": "SiteNavigationElement",
       name: "Gamma 38m² - Capsulă Modulară",
       url: "https://picaps.ro/modele/gamma",
-      description: "Locuință modulară completă 38m² de la €42.500 + TVA",
+      description: "Locuință modulară completă 38m²",
     },
     {
       "@type": "SiteNavigationElement",

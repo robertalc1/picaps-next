@@ -35,7 +35,7 @@ export default function TermeniPage() {
                 2. Produse și Prețuri
               </h2>
               <p className="leading-relaxed">
-                Prețurile afișate pe site sunt exprimate în Euro și nu includ TVA, conform
+                Prețurile comunicate prin ofertă sunt exprimate în Euro și nu includ TVA, conform
                 legislației fiscale în vigoare. Costul transportului și montajului se calculează
                 separat, în funcție de locație, și este comunicat transparent înainte de
                 confirmarea comenzii. Locația de referință pentru livrare este București, România.

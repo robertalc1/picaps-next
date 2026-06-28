@@ -55,21 +55,18 @@ export const SEOTextSection = () => {
               {
                 name: "Alpha",
                 size: "18m²",
-                price: "€23.500 + TVA",
                 desc: "Compact și versatil — ideal pentru studio, birou sau cameră de oaspeți.",
                 href: "/modele/alpha",
               },
               {
                 name: "Beta",
                 size: "28m²",
-                price: "€33.500 + TVA",
                 desc: "Echilibru perfect — dormitor separat, baie completă, zonă de living.",
                 href: "/modele/beta",
               },
               {
                 name: "Gamma",
                 size: "38m²",
-                price: "€42.500 + TVA",
                 desc: "Locuință completă — living spațios, dormitor master, bucătărie și baie premium.",
                 href: "/modele/gamma",
               },
@@ -90,8 +87,8 @@ export const SEOTextSection = () => {
                 <p className="text-[#1D1D1F]/60 text-sm mb-4 leading-relaxed">
                   {model.desc}
                 </p>
-                <p className="font-semibold text-[#1D1D1F] text-base group-hover:text-[#1C4030] transition-colors">
-                  {model.price}
+                <p className="font-semibold text-[#1C4030] text-base group-hover:underline transition-colors">
+                  Preț la cerere
                 </p>
               </Link>
             ))}

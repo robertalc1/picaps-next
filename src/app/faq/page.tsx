@@ -100,8 +100,8 @@ const faqCategories = [
         answer: "Procesul de plată este structurat în două etape: 50% avans la confirmarea comenzii, pentru demararea producției, și 50% diferență înainte de livrare, după finalizarea capsulei și pregătirea pentru transport.",
       },
       {
-        question: "Prețurile afișate includ TVA și transport?",
-        answer: "Prețurile afișate nu includ TVA, acesta fiind aplicabil în funcție de legislația fiscală. Costul transportului este calculat separat, în funcție de locație și distanță, și este comunicat transparent înainte de confirmarea comenzii. Locația de referință pentru livrare este București.",
+        question: "Oferta include TVA și transport?",
+        answer: "Prețul comunicat în ofertă nu include TVA, acesta fiind aplicabil în funcție de legislația fiscală. Costul transportului este calculat separat, în funcție de locație și distanță, și este comunicat transparent înainte de confirmarea comenzii. Locația de referință pentru livrare este București.",
       },
     ],
   },
