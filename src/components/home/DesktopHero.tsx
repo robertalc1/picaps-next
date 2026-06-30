@@ -11,53 +11,19 @@ import { ChevronDown } from 'lucide-react';
 // =============================================================================
 
 export const DesktopHero = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Handle video load
+  // Start playback as soon as possible (autoPlay fallback)
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleCanPlay = () => {
-      setIsLoaded(true);
-      video.play().catch(() => {
-        // Autoplay was prevented, still show the video
-        setIsLoaded(true);
-      });
-    };
-
-    video.addEventListener('canplaythrough', handleCanPlay);
-
-    // If video is already ready
-    if (video.readyState >= 3) {
-      handleCanPlay();
-    }
-
-    return () => {
-      video.removeEventListener('canplaythrough', handleCanPlay);
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-    };
+    videoRef.current?.play().catch(() => {});
   }, []);
 
-  // Show content after 5 seconds on initial load
+  // Reveal hero content immediately — no artificial delay
   useEffect(() => {
-    if (!isLoaded) return;
-
-    timerRef.current = setTimeout(() => {
-      setShowContent(true);
-    }, 5000);
-
-    return () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-    };
-  }, [isLoaded]);
+    const t = setTimeout(() => setShowContent(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -82,7 +48,7 @@ export const DesktopHero = () => {
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
       />
 
 
@@ -178,19 +144,6 @@ export const DesktopHero = () => {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Loading State - Minimal */}
-      {!isLoaded && (
-        <motion.div
-          className="absolute inset-0 z-50 bg-black flex items-center justify-center"
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-8 h-8 border-2 border-white/20 border-t-white/80 rounded-full animate-spin" />
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 };

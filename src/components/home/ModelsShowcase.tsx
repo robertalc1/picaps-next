@@ -373,11 +373,7 @@ export const ModelsShowcase = () => {
     );
 };
 
-// Preload models
-if (typeof window !== 'undefined') {
-    useGLTF.preload('/models/optimized/alpha.glb');
-    useGLTF.preload('/models/optimized/gamma.glb');
-    useGLTF.preload('/models/optimized/beta.glb');
-}
+// Models are loaded on demand by the active <CapsuleModel> (useGLTF), so we no
+// longer eagerly preload all three GLBs — only the visible model is fetched.
 
 export default ModelsShowcase;

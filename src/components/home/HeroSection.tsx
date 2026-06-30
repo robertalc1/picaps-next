@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from "react";
 import { DesktopHero } from './DesktopHero';
 import { MobilHero } from './MobilHero';
 
@@ -9,8 +10,8 @@ const ModelsShowcase = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-screen bg-black flex items-center justify-center">
-        <div className="w-10 h-10 border-2 border-white/20 border-t-white/80 rounded-full animate-spin" />
+      <div className="h-screen bg-[#fafaf9] flex items-center justify-center">
+        <div className="w-10 h-10 border-2 border-neutral-200 border-t-neutral-600 rounded-full animate-spin" />
       </div>
     ),
   }
@@ -18,24 +19,54 @@ const ModelsShowcase = dynamic(
 
 // =============================================================================
 // HERO SECTION - Responsive Video Hero + 3D Showcase Overlay
-// Desktop video on md+ screens, Mobile video on smaller screens
+// Only ONE hero video is mounted (per viewport) and the heavy 3D showcase is
+// lazy-mounted on scroll, to keep the initial load fast.
 // =============================================================================
 
 export const HeroSection = () => {
+  // Decide which hero to load on the client so only ONE video downloads
+  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Mount the heavy 3D showcase only once the user scrolls toward it
+  const showcaseRef = useRef<HTMLDivElement>(null);
+  const [showShowcase, setShowShowcase] = useState(false);
+  useEffect(() => {
+    const el = showcaseRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShowShowcase(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      {/* Mobile Hero - visible only on small screens */}
-      <div className="block md:hidden">
+      {/* Responsive hero — render only the matching video to avoid a double download */}
+      {isMobile === undefined ? (
+        <div className="h-screen w-full bg-black" />
+      ) : isMobile ? (
         <MobilHero />
-      </div>
-
-      {/* Desktop Hero - visible only on md+ screens */}
-      <div className="hidden md:block">
+      ) : (
         <DesktopHero />
-      </div>
+      )}
 
-      {/* 3D Models Showcase - Dynamically loaded to reduce initial bundle */}
-      <ModelsShowcase />
+      {/* 3D Models Showcase - lazy-mounted on scroll to keep it off the initial load */}
+      <div ref={showcaseRef} className="relative z-10 min-h-screen bg-[#fafaf9]">
+        {showShowcase && <ModelsShowcase />}
+      </div>
     </>
   );
 };
