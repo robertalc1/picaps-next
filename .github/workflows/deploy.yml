@@ -1,4 +1,4 @@
-name: Deploy picaps pe Hosterion
+name: Deploy picaps pe Hosterion (FTP)
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-picaps
+  group: deploy-picaps-ftp
   cancel-in-progress: false
 
 permissions:
@@ -31,34 +31,34 @@ jobs:
       - name: Build (next build)
         run: npm run build
 
-      - name: Incarca cheia SSH
-        uses: webfactory/ssh-agent@v0.9.0
+      - name: Curata .next de fisiere inutile
+        run: |
+          rm -rf .next/cache
+          rm -rf .next/standalone
+
+      - name: Deploy .next prin FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./.next/
+          server-dir: .next/
+          dangerous-clean-slate: false
 
-      - name: Test conexiune SSH (diagnostic)
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
+      - name: Pregateste semnalul de restart
         run: |
-          PORT="${SSH_PORT:-22}"
-          echo "=== Incerc conexiunea pe portul $PORT ==="
-          ssh -p "$PORT" -o StrictHostKeyChecking=no -o ConnectTimeout=15 -v \
-            "$SSH_USER@$SSH_HOST" "echo CONECTAT_OK; whoami; ls -d /home2/picapsro/picaps-app/.next" || echo ">>> A esuat pe portul $PORT"
+          mkdir -p restart_signal/tmp
+          date -u +'restart-%Y%m%dT%H%M%SZ' > restart_signal/tmp/restart.txt
 
-      - name: Deploy .next + restart (SSH/rsync)
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-        run: |
-          PORT="${SSH_PORT:-22}"
-          APP="/home2/picapsro/picaps-app"
-          ssh-keyscan -p "$PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
-          rsync -az --delete --exclude 'cache' --exclude 'standalone' \
-            -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
-            ./.next/ \
-            "$SSH_USER@$SSH_HOST:$APP/.next/"
-          ssh -p "$PORT" -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" \
-            "mkdir -p '$APP/tmp' && date -u +'restart-%Y%m%dT%H%M%SZ' > '$APP/tmp/restart.txt'"
+      - name: Trimite restart prin FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./restart_signal/
+          server-dir: ./
+          dangerous-clean-slate: false
