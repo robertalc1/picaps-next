@@ -29,6 +29,8 @@ export const AntigravityButton = ({
     ...props
 }: AntigravityButtonProps) => {
     const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
+    // Cache the button rect on enter so we don't force a layout read on every mousemove
+    const rectRef = useRef<DOMRect | null>(null);
 
     // Magnetic Physics
     const x = useMotionValue(0);
@@ -39,15 +41,21 @@ export const AntigravityButton = ({
     const springX = useSpring(x, springConfig);
     const springY = useSpring(y, springConfig);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const handleMouseEnter = () => {
         if (!magnetic || !ref.current) return;
+        rectRef.current = ref.current.getBoundingClientRect();
+    };
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+        if (!magnetic) return;
+        const rect = rectRef.current;
+        if (!rect) return;
 
         const { clientX, clientY } = e;
-        const { height, width, left, top } = ref.current.getBoundingClientRect();
 
-        // Calculate center
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
+        // Calculate center from the cached rect (no reflow per move)
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
         // Calculate distance from center (max 15px movement)
         const distanceX = (clientX - centerX) * 0.35;
@@ -59,6 +67,7 @@ export const AntigravityButton = ({
 
     const handleMouseLeave = () => {
         if (!magnetic) return;
+        rectRef.current = null;
         x.set(0);
         y.set(0);
     };
@@ -103,6 +112,7 @@ export const AntigravityButton = ({
     const commonProps = {
         ref: ref as any,
         style: { x: springX, y: springY },
+        onMouseEnter: handleMouseEnter,
         onMouseMove: handleMouseMove,
         onMouseLeave: handleMouseLeave,
         className: cn(baseStyles, variantStyles[variant], sizeStyles[size], typoStyles, className),

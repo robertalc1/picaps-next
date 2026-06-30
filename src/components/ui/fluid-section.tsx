@@ -18,24 +18,46 @@ interface FluidSectionProps {
     id?: string;
 }
 
-export const FluidSection = ({
-    children,
-    className,
-    classNameContent,
-    topBlur = false,
-    bottomBlur = false,
-    meltTop = false,
-    meltBottom = false,
-    id,
-}: FluidSectionProps) => {
-    const ref = useRef<HTMLDivElement>(null);
+const TopBlur = () => (
+    <div
+        className="absolute top-0 left-0 right-0 h-32 sm:h-48 z-20 pointer-events-none select-none"
+        style={{
+            background: "linear-gradient(to bottom, #FAFAFA, rgba(250,250,250,0))",
+            maskImage: "linear-gradient(to bottom, black, transparent)",
+        }}
+    >
+        <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: `url("${NOISE_SVG}")` }} />
+    </div>
+);
+
+const BottomBlur = () => (
+    <div
+        className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 z-20 pointer-events-none select-none"
+        style={{
+            background: "linear-gradient(to top, #FAFAFA, rgba(250,250,250,0))",
+            maskImage: "linear-gradient(to top, black, transparent)",
+        }}
+    >
+        <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: `url("${NOISE_SVG}")` }} />
+    </div>
+);
+
+// Lightweight variant: no scroll subscription, no mask animation.
+const StaticSection = ({ children, className, classNameContent, topBlur, bottomBlur, id }: FluidSectionProps) => (
+    <section id={id} className={cn("relative w-full", className)}>
+        {topBlur && <TopBlur />}
+        <div className={cn("w-full h-full", classNameContent)}>{children}</div>
+        {bottomBlur && <BottomBlur />}
+    </section>
+);
+
+// Scroll-linked variant: animates a mask gradient on the melt edge(s).
+const MeltSection = ({ children, className, classNameContent, topBlur, bottomBlur, meltTop, meltBottom, id }: FluidSectionProps) => {
+    const ref = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"],
     });
-
-    // Scroll-Linked Masking Logic
-    // We always call useTransform to satisfy Rules of Hooks.
 
     // Top Stop: 20% -> 0% (reveals top)
     const topStopRaw = useTransform(scrollYProgress, [0, 0.15], ["20%", "0%"]);
@@ -45,55 +67,29 @@ export const FluidSection = ({
     const bottomStopRaw = useTransform(scrollYProgress, [0.85, 1], ["100%", "80%"]);
     const bottomStop = meltBottom ? bottomStopRaw : "100%";
 
-    const maskGradient = useMotionTemplate`linear-gradient(to bottom, 
-    transparent 0%, 
-    black ${topStop}, 
-    black ${bottomStop}, 
+    const maskGradient = useMotionTemplate`linear-gradient(to bottom,
+    transparent 0%,
+    black ${topStop},
+    black ${bottomStop},
     transparent 100%
   )`;
 
-    const computedMask = (meltTop || meltBottom) ? maskGradient : undefined;
-
     return (
-        <section
-            ref={ref}
-            id={id}
-            className={cn("relative w-full", className)}
-        >
-            {/* Top Ethereal Gradient (Frosted Glass) */}
-            {topBlur && (
-                <div
-                    className="absolute top-0 left-0 right-0 h-32 sm:h-48 z-20 pointer-events-none select-none"
-                    style={{
-                        background: "linear-gradient(to bottom, #FAFAFA, rgba(250,250,250,0))",
-                        maskImage: "linear-gradient(to bottom, black, transparent)"
-                    }}
-                >
-                    {/* Noise Overlay applied to the gradient area */}
-                    <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: `url("${NOISE_SVG}")` }} />
-                </div>
-            )}
-
-            {/* Main Content with Scroll Logic */}
+        <section ref={ref} id={id} className={cn("relative w-full", className)}>
+            {topBlur && <TopBlur />}
             <motion.div
                 className={cn("w-full h-full", classNameContent)}
-                style={{ maskImage: computedMask, WebkitMaskImage: computedMask }}
+                style={{ maskImage: maskGradient, WebkitMaskImage: maskGradient, willChange: "mask-image" }}
             >
                 {children}
             </motion.div>
-
-            {/* Bottom Ethereal Gradient (Frosted Glass) */}
-            {bottomBlur && (
-                <div
-                    className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 z-20 pointer-events-none select-none"
-                    style={{
-                        background: "linear-gradient(to top, #FAFAFA, rgba(250,250,250,0))",
-                        maskImage: "linear-gradient(to top, black, transparent)"
-                    }}
-                >
-                    <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay" style={{ backgroundImage: `url("${NOISE_SVG}")` }} />
-                </div>
-            )}
+            {bottomBlur && <BottomBlur />}
         </section>
     );
+};
+
+export const FluidSection = (props: FluidSectionProps) => {
+    // Only pay the useScroll / mask-animation cost when an edge actually melts.
+    if (props.meltTop || props.meltBottom) return <MeltSection {...props} />;
+    return <StaticSection {...props} />;
 };
